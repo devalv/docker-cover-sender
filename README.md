@@ -7,7 +7,7 @@
 ```yaml
 generate_coverage:
   stage: coverage
-  image: devalv/cover-sender:0.1.0
+  image: devalv/cover-sender:0.1.2
 
   tags:
     - docker
@@ -25,7 +25,7 @@ generate_coverage:
 make image-build
 ```
 
->- devalv/cover-sender:0.1.0
+>- devalv/cover-sender:0.1.2
 
 ### Публикация
 
