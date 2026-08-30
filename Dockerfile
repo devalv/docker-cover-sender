@@ -7,10 +7,10 @@ RUN apt-get update \
         python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
-RUN go install github.com/matm/gocov-html/cmd/gocov-html@vX.Y.Z \
+RUN go install github.com/matm/gocov-html/cmd/gocov-html@v1.4.0 \
     && go install github.com/axw/gocov/gocov@v1.1.0
 
-RUN pip3 install --no-cache-dir --break-system-packages aio-send-dir
+RUN pip3 install --no-cache-dir --break-system-packages aio-send-dir==0.1.6
 
 WORKDIR /app
 
