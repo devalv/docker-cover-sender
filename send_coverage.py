@@ -12,5 +12,6 @@ asyncio.run(
         from_email=os.environ["SMTP_USER"],
         recipient_emails=os.environ["COVERAGE_EMAIL"].split(","),
         sender_alias="Coverage Report",
+        smtp_pass=os.environ["SMTP_PASS"],
     )
 )
