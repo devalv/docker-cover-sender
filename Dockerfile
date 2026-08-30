@@ -7,10 +7,26 @@ RUN apt-get update \
         python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
-RUN go install github.com/matm/gocov-html/cmd/gocov-html@v1.4.0 \
-    && go install github.com/axw/gocov/gocov@v1.1.0
+RUN GOBIN=/usr/local/bin \
+    go install github.com/matm/gocov-html/cmd/gocov-html@v1.4.0 \
+    && GOBIN=/usr/local/bin \
+    go install github.com/axw/gocov/gocov@v1.1.0
 
-RUN pip3 install --no-cache-dir --break-system-packages aio-send-dir==0.1.6
+RUN pip3 install \
+    --no-cache-dir \
+    --break-system-packages \
+    aio-send-dir==0.1.6
+
+# TODO:
+# RUN groupadd --system nonroot \
+#     && useradd --system \
+#         --gid nonroot \
+#         --create-home \
+#         --shell /usr/sbin/nologin \
+#         nonroot
+
+ENV GOCACHE=/tmp/go-build
+ENV GOPATH=/tmp/go
 
 WORKDIR /app
 
@@ -18,6 +34,7 @@ COPY coverage.sh /usr/local/bin/coverage
 
 RUN chmod +x /usr/local/bin/coverage
 
-USER nonroot:nonroot
+# TODO:
+# USER nonroot:nonroot
 
 ENTRYPOINT ["coverage"]
