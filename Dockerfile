@@ -24,5 +24,3 @@ ENV GOPATH=/tmp/go
 COPY coverage.sh /usr/local/bin/coverage
 
 RUN chmod +x /usr/local/bin/coverage
-
-ENTRYPOINT ["coverage"]

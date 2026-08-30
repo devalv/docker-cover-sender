@@ -1,7 +1,7 @@
 # Docker Hub image
 DOCKERHUB_USER ?= devalv
 IMAGE_NAME ?= cover-sender
-IMAGE_TAG ?= 0.1.3
+IMAGE_TAG ?= 0.1.4
 
 IMAGE := $(DOCKERHUB_USER)/$(IMAGE_NAME):$(IMAGE_TAG)
 
