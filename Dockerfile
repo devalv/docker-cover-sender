@@ -17,24 +17,12 @@ RUN pip3 install \
     --break-system-packages \
     aio-send-dir==0.1.6
 
-# TODO:
-# RUN groupadd --system nonroot \
-#     && useradd --system \
-#         --gid nonroot \
-#         --create-home \
-#         --shell /usr/sbin/nologin \
-#         nonroot
-
 ENV GOCACHE=/tmp/go-build
 ENV GOPATH=/tmp/go
 
-WORKDIR /app
 
 COPY coverage.sh /usr/local/bin/coverage
 
 RUN chmod +x /usr/local/bin/coverage
-
-# TODO:
-# USER nonroot:nonroot
 
 ENTRYPOINT ["coverage"]
